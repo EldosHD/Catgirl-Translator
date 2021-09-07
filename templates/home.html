@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<form action="#" method="post">
+<div class="container-fluid">
+    <h1>Home</h1>
+    <div class="row">
+        <div class="col-sm-2">
+            <label for="inputText">Type your text here:</label>
+        </div>    
+        <div class="col-sm-2 verticalOffset">
+            <textarea name="inputText"></textarea>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2">
+            <label for="outputText">Translation:</label>
+        </div>
+        <div class="col-sm-2 verticalOffset">
+            <textarea name="outputText"></textarea>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2">
+            <input class="btn btn-light" type="submit" value="translate">
+        </div>
+    </div>
+</div>
+</form>
+{% endblock %}
