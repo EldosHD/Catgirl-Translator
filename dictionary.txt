@@ -10,6 +10,7 @@ cheese -> sergal
 child -> cub
 computer/robot/cyborg -> protogen
 cum -> cummy wummy~
+dad -> daddy
 disease -> pathOwOgen
 dog -> good boy
 dragon -> derg

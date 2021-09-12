@@ -4,6 +4,8 @@ from sys import platform
 
 app = Flask(__name__)
 
+data = {} #init dictionary
+
 if platform == "linux" or platform == "linux2":
     # linux
     dic =open("./dictionary.txt").readlines()
@@ -15,6 +17,11 @@ elif platform == "win32":
     # Windows...
     dic =open("Catgirl-Translator\dictionary.txt").readlines()
 
+for line in dic:
+    trans = line.split(" -> ")                      #read line and separate normal and furry
+    data[trans[0]] = trans[1].replace("\n", "")     #save translation into dictionary
+
+#----------Website Start ----------
 @app.route("/", methods=["POST","GET"])
 def home():
     translation = ""
@@ -22,7 +29,7 @@ def home():
         inputText = request.form["inputText"]
         if inputText != "":
             print("Translating: " + inputText)
-            translation = translate(inputText, dic)
+            translation = translate(inputText, data)
             print("Translation: " + translation)
 
         return render_template("home.html", inputArea=inputText, outputArea=translation) 
@@ -31,14 +38,14 @@ def home():
 
 @app.route("/dictionary/")
 def dictionary():
-    return render_template("dictionary.html", dic=dic)
+    return render_template("dictionary.html", data=data)
 
 @app.route("/about/")
 def about():
     return render_template("about.html")
-
+#----------Website End-----------
 
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0",port=6969)
+    app.run(host="0.0.0.0", port=6969, debug=True)

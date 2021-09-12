@@ -1,14 +1,4 @@
-def translate(toTranslate, dic: list):
-
-    #initialise dictionary
-    data = {}
-
-    #open text file with translations in form of:
-    #normal (1+ words separated by single space) + double space + furry (1+ words separated by single space)
-    infile = dic
-    for line in infile:
-        trans = line.split(" -> ")                      #read line and separate normal and furry
-        data[trans[0]] = trans[1].replace("\n", "")     #save translation into dictionary
+def translate(toTranslate, data: dict):
 
     token = toTranslate.split(" ")                    #read input from user and separated into words 
     result = ""
