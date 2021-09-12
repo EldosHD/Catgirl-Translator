@@ -20,7 +20,7 @@ def home():
 
 @app.route("/dictionary/")
 def dictionary():
-    dic =open("dictionary.txt").readlines()
+    dic =open("Catgirl-Translator\dictionary.txt").readlines()
     return render_template("dictionary.html", dic=dic)
 
 @app.route("/about/")
