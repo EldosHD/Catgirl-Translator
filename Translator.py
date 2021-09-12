@@ -10,10 +10,8 @@ def translate(toTranslate, data: dict):
         for j in range(i,len(token)):                   
             word = " ".join(token[i:j+1])
             temp =  word
-            word = word.lower().rstrip("!.?-~#")                                        #check for all possible continous combinations starting from i
-            
+            word = word.lower().rstrip(",!.?-~#")                                        #check for all possible continous combinations starting from i
             end = temp[len(word):]
-            print(repr(word))
             if word in data:
                 result += data[word]+ end + " "              #translation found
                 found = True
