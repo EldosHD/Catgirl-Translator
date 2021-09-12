@@ -3,7 +3,7 @@ from Translator import translate
 
 app = Flask(__name__)
 
-dic =open("Catgirl-Translator\\dictionary.txt").readlines()
+dic =open("Catgirl-Translator/dictionary.txt").readlines()
 
 @app.route("/", methods=["POST","GET"])
 def home():
