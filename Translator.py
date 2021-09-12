@@ -1,6 +1,8 @@
+import re
+
 def translate(toTranslate, data: dict):
 
-    token = toTranslate.split(" ")                    #read input from user and separated into words 
+    token = re.split(" |\r\n|\n\r|\r|\n", toTranslate)                    #read input from user and separated into words 
     result = ""
     i = 0                                               #current starting word to check from
     while i < len(token):
@@ -8,8 +10,10 @@ def translate(toTranslate, data: dict):
         for j in range(i,len(token)):                   
             word = " ".join(token[i:j+1])
             temp =  word
-            word = word.lower().rstrip("!.?-~#")                                           #check for all possible continous combinations starting from i
+            word = word.lower().rstrip("!.?-~#")                                        #check for all possible continous combinations starting from i
+            
             end = temp[len(word):]
+            print(repr(word))
             if word in data:
                 result += data[word]+ end + " "              #translation found
                 found = True
