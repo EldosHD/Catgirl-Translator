@@ -3,6 +3,7 @@ from Translator import translate
 
 app = Flask(__name__)
 
+dic =open("Catgirl-Translator\\dictionary.txt").readlines()
 
 @app.route("/", methods=["POST","GET"])
 def home():
@@ -11,7 +12,7 @@ def home():
         inputText = request.form["inputText"]
         if inputText != "":
             print("Translating: " + inputText)
-            translation = translate(inputText)
+            translation = translate(inputText, dic)
             print("Translation: " + translation)
 
         return render_template("home.html", inputArea=inputText, outputArea=translation) 
@@ -20,7 +21,6 @@ def home():
 
 @app.route("/dictionary/")
 def dictionary():
-    dic =open("Catgirl-Translator\\dictionary.txt").readlines()
     return render_template("dictionary.html", dic=dic)
 
 @app.route("/about/")
