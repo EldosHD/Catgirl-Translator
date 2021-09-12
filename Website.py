@@ -1,9 +1,19 @@
 from flask import Flask, render_template, request
 from Translator import translate
+from sys import platform
 
 app = Flask(__name__)
 
-dic =open("Catgirl-Translator\dictionary.txt").readlines()
+if platform == "linux" or platform == "linux2":
+    # linux
+    dic =open("./dictionary.txt").readlines()
+elif platform == "darwin":
+    # mac os
+    print("This does not run on macOS")
+    exit()
+elif platform == "win32":
+    # Windows...
+    dic =open("Catgirl-Translator\dictionary.txt").readlines()
 
 @app.route("/", methods=["POST","GET"])
 def home():
