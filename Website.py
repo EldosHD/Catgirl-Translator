@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 from flask import Flask, render_template, request
-from Translator import translate
 from sys import platform
+from owo import owo
 
 app = Flask(__name__)
 
@@ -30,7 +30,7 @@ def home():
         inputText = request.form["inputText"]
         if inputText != "":
             print("Translating: " + inputText)
-            translation = translate(inputText, data)
+            translation = owo(inputText)
             print("Translation: " + translation)
 
         return render_template("home.html", inputArea=inputText, outputArea=translation) 
